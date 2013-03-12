@@ -1,4 +1,4 @@
-wget https://s3.amazonaws.com/o19s-experiments/wordcount/TomSawyer.txt
-wget https://s3.amazonaws.com/o19s-experiments/wordcount/HuckleberryFinn.txt
-$HADOOP_HOME/bin/hadoop dfs -copyFromLocal ./* books
-bin/hadoop jar JOHN/Hadoopadoop/matrixtranspose/matrixtranspose.jar org.myorg.MatrixTranspose trash howitworks
+#Getting Started
+* Download hadoop. I'm using version 1.0.4.
+* Make sure that HADOOP_HOME and JAVA_HOME are properly defined.
+* `./build.sh WordCount` etc. will just work.
