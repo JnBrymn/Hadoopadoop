@@ -27,8 +27,8 @@ public class MatrixTranspose {
       MapWritable map = new MapWritable();
       int col = 0;
       for(String v : vals) {
-        double val = Double.parseDouble(v);
-        map.put(new LongWritable(row), new DoubleWritable(val));
+        int val = Integer.parseInt(v);
+        map.put(new LongWritable(row), new IntWritable(val));
         context.write(new LongWritable(col), map);
         col++;
       }
@@ -39,15 +39,15 @@ public class MatrixTranspose {
 
     public void reduce(LongWritable key, Iterable<MapWritable> maps, Context context)
       throws IOException, InterruptedException {
-        SortedMap<LongWritable,DoubleWritable> rowVals = new TreeMap<LongWritable,DoubleWritable>();
+        SortedMap<LongWritable,IntWritable> rowVals = new TreeMap<LongWritable,IntWritable>();
         for (MapWritable map : maps) {
           for(Entry<Writable, Writable>  entry : map.entrySet()) {
-            rowVals.put((LongWritable) entry.getKey(),(DoubleWritable) entry.getValue());
+            rowVals.put((LongWritable) entry.getKey(),(IntWritable) entry.getValue());
           }
         }
 
         StringBuffer sb = new StringBuffer();
-        for(DoubleWritable rowVal : rowVals.values()) {
+        for(IntWritable rowVal : rowVals.values()) {
           sb.append(rowVal.toString());
           sb.append(" ");
         }

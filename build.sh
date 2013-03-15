@@ -7,7 +7,11 @@ fi
 
 name=$1
 
-cd ${name}
+pushd .
+cd ${name}/${name}In
+unzip -o *.zip
+rm *.zip
+cd ..
 rm ${name}.jar
 rm -fr ${name}Classes
 rm -fr ${name}Out
@@ -15,4 +19,4 @@ mkdir ${name}Classes
 javac -classpath ${HADOOP_HOME}/hadoop*-*core*.jar -d ${name}Classes ${name}.java 
 jar -cvf ${name}.jar -C ${name}Classes/ .
 ${HADOOP_HOME}/bin/hadoop jar ${name}.jar org.myorg.${name} ${name}In/ ${name}Out
-cd -
+popd
