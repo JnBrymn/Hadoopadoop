@@ -5,4 +5,9 @@
 run a local Hadoop MapReduce job on the sample files in
 WordCount/WordCountIn. The results will be placed in WordCountOut. Make
 sure to take a look at the scrip. It's written to be approachable.
+* `./runall.sh` will run every example printing the name and printing
+"Exception" if there was one.
 
+
+If you want git to stop bothering you about the removed zip files, try git update-index --assume-unchanged -z
+whatever.zip
