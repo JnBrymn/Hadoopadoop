@@ -1,3 +1,5 @@
 */*.jar
 */*Classes
 */*Out
+*/*In
+!*/*In/*.zip
